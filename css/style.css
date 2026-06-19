@@ -239,6 +239,9 @@ header {
 .third-item .content-2 {
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2em;
 }
 .third-item .icon-box {
   width: 30%;
@@ -388,6 +391,9 @@ footer .content-2 {
 
 /* ===== RESPONSIVE — Tablets y móviles en horizontal ===== */
 @media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
   .dots {
     display: none;
   }
@@ -445,20 +451,50 @@ footer .content-2 {
   .menu ul li:hover:nth-child(5) { background-color: var(--acea-teal-deep); border-bottom: none; }
   .menu ul li:hover:nth-child(7) { background-color: var(--acea-blue); border-bottom: none; }
 
+  /* Hero: reducir tamaño en tablet */
+  .superior-item {
+    font-size: 1em;
+    padding: 2em 1em;
+  }
+  .superior-item h1 {
+    font-size: 2em;
+  }
+  .superior-item p {
+    width: 90%;
+  }
+
+  /* Banner: asegurar visibilidad */
   .third-item .content-2 {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2em 1em;
+    box-sizing: border-box;
   }
   .third-item .icon-box {
     width: 100%;
     margin-bottom: 1em;
   }
   .third-item .content-area {
-    width: 90%;
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+
+  .fourty-item .content-2 {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+    box-sizing: border-box;
   }
   .fourty-item .icon-box {
     align-self: center;
     padding-left: 0;
+    margin-top: 1em;
+  }
+  .fourty-item .content-area {
+    width: 100%;
   }
   .nosotros .content .mision {
     width: 100%;
@@ -470,21 +506,38 @@ footer .content-2 {
   .menu ul {
     width: 75%;
   }
-  .superior-item p {
-    font-weight: lighter;
-    font-size: .85em;
-    width: 90%;
+
+  /* Hero: fuente más pequeña para evitar desbordamiento */
+  .superior-item {
+    font-size: 0.85em;
+    min-height: 400px;
   }
+  .superior-item h1 {
+    font-size: 1.8em;
+    word-break: break-word;
+  }
+  .superior-item p {
+    font-weight: 400;
+    font-size: 1em;
+    width: 92%;
+  }
+
   .second-item .content-2 {
     flex-direction: column;
     align-items: center;
   }
+
+  /* Banner: título más pequeño */
   .third-item .content-area h1 {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
   .third-item .content-area p {
-    font-weight: lighter;
+    font-size: 0.95em;
   }
+  .banner-icon {
+    font-size: 5rem;
+  }
+
   .fourty-item .icon-box {
     display: none;
   }
