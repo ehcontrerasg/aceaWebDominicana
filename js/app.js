@@ -1,44 +1,43 @@
 $(function () {
     var togg = true;
+
+    // Menú móvil
     $('.menu-btn').click(function () {
         if (togg) {
-            $(this).css('position', 'fixed');
-            $('.menu').fadeIn('fast')
-                .find('ul').css({
-                    'right': '0'
-                })
+            $('.menu').fadeIn('fast').find('ul').css({ 'right': '0' });
         } else {
-            $(this).css('position', 'absolute');
-            $('.menu').fadeOut('slow')
-                .find('ul').css({
-                    'right': '-100%'
-                })
+            $('.menu').fadeOut('slow').find('ul').css({ 'right': '-100%' });
         }
         togg = !togg;
-    })
+    });
+
     $('.menu').not('ul, a').click(function (e) {
         e.stopPropagation();
-        if (e.target.nodeName == 'DIV' || e.target.nodeName == 'A' && window.innerWidth <= 728) {
-            $(this).fadeOut('slow')
-                .find('ul').css({
-                    'right': '-100%'
-                })
+        if (e.target.nodeName === 'DIV' || (e.target.nodeName === 'A' && window.innerWidth <= 728)) {
+            $(this).fadeOut('slow').find('ul').css({ 'right': '-100%' });
             togg = !togg;
-
         }
-    })
-    
+    });
+
+    // Animación de texto en el hero
     $('#text-animation').cycleText();
-    
-    // Anadiendo suavisado a los links internos de la web
-    
-    var linkInterno = $('a[href^="#"]');
-    
-    linkInterno.on('click', function(e){
+
+    // Scroll suave con compensación del header sticky
+    $('a[href^="#"]').on('click', function (e) {
         e.preventDefault();
         var href = $(this).attr('href');
-        $('html, body').animate({
-            scrollTop : $(href).offset().top
-        }, 'slow','easeOutBack')
-    })
+        var target = $(href);
+        if (!target.length) return;
+
+        var headerH = $('header').outerHeight() || 0;
+        var scrollTo = href === '#top' ? 0 : target.offset().top - headerH;
+
+        $('html, body').animate({ scrollTop: scrollTo }, 600, 'swing');
+
+        // Cierra el menú móvil al navegar
+        if (window.innerWidth <= 768) {
+            $('.menu').fadeOut('slow').find('ul').css({ 'right': '-100%' });
+            togg = true;
+        }
+    });
 });
