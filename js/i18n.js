@@ -189,9 +189,13 @@ function applyLanguage(lang) {
   // Texto del ciclo animado
   var cycleEl = document.getElementById('text-animation');
   if (cycleEl && t.hero_cycle) {
+    var $cycleEl = $(cycleEl);
+    var existing = $cycleEl.data('plugin_cycleText');
+    if (existing) { existing.pause(); }
+    $cycleEl.removeData('plugin_cycleText');
     cycleEl.textContent = t.hero_cycle;
     if (typeof $.fn.cycleText === 'function') {
-      $(cycleEl).cycleText();
+      $cycleEl.cycleText();
     }
   }
 

@@ -19,9 +19,6 @@ $(function () {
         }
     });
 
-    // Animación de texto en el hero
-    $('#text-animation').cycleText();
-
     // Scroll suave con compensación del header sticky
     $('a[href^="#"]').on('click', function (e) {
         e.preventDefault();
