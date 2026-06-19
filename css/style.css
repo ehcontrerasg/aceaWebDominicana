@@ -89,21 +89,25 @@ header {
   max-height: 70px;
   width: auto;
 }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-right: 1em;
+}
 .menu-btn {
   font-size: 2em;
-  position: absolute;
-  right: 10px;
-  top: 5px;
   display: none;
   cursor: pointer;
   color: var(--acea-teal);
+  line-height: 1;
 }
 .menu {
-  width: 70%;
-  margin-right: 1em;
+  flex: 1;
+  margin-right: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   z-index: 2;
 }
 .menu ul {
@@ -143,7 +147,6 @@ header {
   display: flex;
   gap: 4px;
   align-items: center;
-  margin-left: 1.5em;
   flex-shrink: 0;
 }
 .lang-btn {
@@ -402,7 +405,10 @@ footer .content-2 {
     z-index: 3;
   }
   header {
-    padding: 0;
+    padding: 0 0.5em;
+  }
+  .header-right {
+    margin-right: 0;
   }
   .logo {
     padding: 5px 0;
